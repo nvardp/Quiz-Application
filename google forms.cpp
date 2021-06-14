@@ -103,7 +103,8 @@ void Teacher:: add_new_question(std::string& q)
 void Student::show_questions_and_save_answers(const std::string& filename)
 {
 	std::fstream file;
-	file.open(get_path_of_exe() + "\\" + filename + ".txt");
+	std::string finalname = get_path_of_exe() + "\\" + filename + ".txt";
+	file.open(finalname);
 	std::string line;
 	std::string answer;
 	while (!file.eof())
@@ -112,8 +113,9 @@ void Student::show_questions_and_save_answers(const std::string& filename)
 		while (line != END_OF_QUESTION)
 		{
 			if(line!=""&& line!=END_OF_QUESTION)
-			std::getline(file, line);
 			std::cout << line << std::endl;
+			std::getline(file, line);
+			
 		}
 		std::cout << "you can enter only one answer (ex. a or 1)\n";
 		std::getline(std::cin, answer);
